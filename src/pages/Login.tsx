@@ -8,7 +8,6 @@ import {
 import {Link,useNavigate} from 'react-router-dom'
 import "../assets/styles/login.scss"
 import {login} from "../api/user";
-import LoginCard from "../components/LoginCard";
 import {ProFormCaptcha} from "@ant-design/pro-components";
 import {Code} from "../constant";
 import {save} from "../store/user";
@@ -17,12 +16,10 @@ import {useDispatch} from "react-redux";
 const LoginBody: React.FC = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch();
-
     const [loginType, setLoginType] = useState('account');
-
     const loginByEmail=()=>{
-    }
 
+    }
 
     const loginByAccount = async (values: {
         user_name: string;
@@ -32,7 +29,7 @@ const LoginBody: React.FC = () => {
         if (data.status === Code.SuccessCode) {
             dispatch(save({...data.data.user, access_token: data.data.access_token,refresh:data.data.refresh_token}));
             message.success("登陆成功")
-            navigate('/Story/List');
+            // navigate('/Story/List');
         } else {
             message.error("账号名/密码错误")
         }
@@ -53,11 +50,19 @@ const LoginBody: React.FC = () => {
 
     return (
         <div className="login">
-            <LoginCard></LoginCard>
+            <div className="loginCardBox">
+                <div className="loginCardTitle">去看看大千万物</div>
+                <div className="loginCardSubTitle">所想所寻,应有尽有</div>
+                <div className="loginCardAction">
+                    <Button className="loginCardButton">
+                        <span>去看看</span>
+                    </Button>
+                </div>
+            </div>
             <div className="login_box">
                 <div className='login_form'>
-                    <h1 className={'login_form_text'}> 登 陆 </h1>
-                    <p className={'login_form_text_sub'}>相遇生活，见证未来</p>
+                    <h1 className={'login_form_text'}> LOGIN </h1>
+                    <p className={'login_form_text_sub'}>FanOne Mall</p>
                     <Tabs centered activeKey={loginType} onChange={setLoginType} items={items}></Tabs>
 
                     {
@@ -76,7 +81,7 @@ const LoginBody: React.FC = () => {
                                         message: '请输入用户名!'},
                                         {
                                             pattern: /^[a-zA-Z][a-zA-Z0-9_]{5,15}$/,
-                                            message: '字母开头，允许6-16字符，允许字母数字下划线！',
+                                            message: '字母开头,允许6-16字符,允许字母数字下划线！',
                                         },
                                     ]}
                                 >
@@ -143,7 +148,7 @@ const LoginBody: React.FC = () => {
                                         message: '请输入验证码！',
                                     },]}
                                     onGetCaptcha={async () => {
-                                        message.success('获取验证码成功！验证码为：1234');
+                                        message.success('获取验证码成功!验证码为:1234');
                                     }} />
 
                                 <Form.Item>

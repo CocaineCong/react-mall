@@ -18,33 +18,77 @@
     }
   }
   
-  .register{
+.register{
     background: #ffffff;
     width: 100vw;
     height: 100vh;
     position: relative;
-  
     .register_box{
-      width: 500px;
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%,-50%);
-      border: 3px solid #999999;
-      border-radius: 5px;
+        width: 500px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+        border: 3px solid #999999;
+        border-radius: 5px;
     }
-  }
+}
   
-  .login_form{
+.login_form{
     width: 328px;
     margin: 0 auto;
-  }
+}
   
-  .register_form{
-    //min-width: 328px;
-    //max-width: 500px;
+.register_form{
     width: 328px;
     margin: 0 auto;
-  }
+}
   
+.loginCardBox{
+    position: absolute;
+    width: 300px;
+    height: auto;
+    bottom: 200px;
+    left: 100px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 8px;
+    color: rgb(255, 255, 255);
+    border-radius: 8px;
+    background-color: rgb(22, 119, 255);
+    margin-block: 24px;
+    margin-inline: 24px;
+    padding-inline: 24px;
+    padding-block: 24px;
   
+}
+  
+.login_form_text{
+    top: 10px;
+    position: relative;
+    text-align: center;
+}
+
+.login_form_text_sub{
+    position: relative;
+    text-align: center;
+    opacity:0.5;
+}
+
+.loginCardTitle{
+    font-weight: 500;
+    font-size: 28px;
+}
+
+.loginCardSubTitle {
+    margin-block-start: 8px;
+    font-size: 16px;
+}
+
+.loginCardAction{
+    margin-block-start: 24px;
+}
+
+.loginCardButton{
+    border-radius: 20px;
+    background: rgb(255, 255, 255);
+    color: rgb(22, 119, 255);
+}
