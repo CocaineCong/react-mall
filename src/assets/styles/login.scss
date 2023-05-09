@@ -1,0 +1,50 @@
+.login{
+    background: white;
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+  
+    .login_box{
+      width: 500px;
+      position: absolute;
+      left: 70%;
+      top: 50%;
+      height: 550px;
+      transform: translate(-50%,-50%);
+      background: white;
+      border: 3px solid white;
+      border-radius: 5px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, .12), 0 0 8px rgba(0, 0, 0, .04)
+    }
+  }
+  
+  .register{
+    background: #ffffff;
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+  
+    .register_box{
+      width: 500px;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%,-50%);
+      border: 3px solid #999999;
+      border-radius: 5px;
+    }
+  }
+  
+  .login_form{
+    width: 328px;
+    margin: 0 auto;
+  }
+  
+  .register_form{
+    //min-width: 328px;
+    //max-width: 500px;
+    width: 328px;
+    margin: 0 auto;
+  }
+  
+  
