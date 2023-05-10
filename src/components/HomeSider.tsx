@@ -26,8 +26,8 @@ function getItem(
 }
 
 const items: MenuItem[] = [
-    getItem('主页', '/Story/List', <SmileTwoTone />),
-    getItem('时间轴', '/Timeline/List', <AppstoreTwoTone />),
+    getItem('主页', '/Product/List', <SmileTwoTone />),
+    getItem('关注的店铺', '/ProductBoss/Star', <AppstoreTwoTone />),
     getItem('开发中', '/Deving', <MehTwoTone />),
 ];
 
@@ -60,7 +60,7 @@ function HomeSider(){
                 }}
            theme="light"
         >
-        <div style={{ height: 32, margin: 16}}> <h1>HeyStory</h1> </div>
+        <div style={{ height: 32, margin: 16}}> <h1>FanOneMall</h1> </div>
             <Menu
                 theme="light"
                 mode="inline"
