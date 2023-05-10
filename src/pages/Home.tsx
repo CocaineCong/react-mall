@@ -13,11 +13,9 @@ const Home: React.FC = () => {
             <HomeSider />
             <Layout className="site-layout" style={{ marginLeft: 200,background:'white' }}>
                 <Header  />
-                <Divider plain></Divider>
-                <Content style={{ margin: '24px 16px 0', overflow: 'initial' }}>
-                    <div style={{ padding: 24, textAlign: 'center' }}>
-                        <Outlet />
-                    </div>
+                <Divider plain />
+                <Content style={{overflow: 'initial' }}>
+                    <Outlet />
                 </Content>
             </Layout>
         </Layout>

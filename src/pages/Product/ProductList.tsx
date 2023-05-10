@@ -4,6 +4,8 @@ import {Link} from 'react-router-dom'
 import '../../assets/styles/product.scss'
 import {listProduct} from "../../api/product";
 import {Code} from "../../constant";
+import CarouselComp from "../../components/Carousel";
+import { EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
 
 const { Meta } = Card;
 
@@ -18,9 +20,13 @@ const ProductList: React.FC = () => {
             page_size: pageSize,
         })
         if (data.status === Code.SuccessCode){
-            console.log("data",data)
-            console.log("data.data",data.data)
-            setItems(data?.data?.item || []);
+            let items = data?.data?.item
+            // 遍历 persons 数组
+            items.forEach((item:any) => {
+                item.info = item.info.slice(0, 13);
+                item.info = item.info+"..."
+            });
+            setItems(items || []);
         } else {
             message.error(data?.data?.msg)
         }
@@ -32,31 +38,28 @@ const ProductList: React.FC = () => {
 
     return(
         <div>
-            <CarouselComp />
+            {/* <CarouselComp /> */}
             <div className='productCardList'>
                 {
                     items?.map((item)=>(
                         <Link className='productList' to={`/product/${item.id}`} target="_blank" key={item.id}>
-                            <Card hoverable
-                                  cover={<img alt="example" style={{height:220,padding:5}} src={`${item.img_path}`} />} >
-                        
-                                <div className={'productListAvatarContainer'}>
-                            
-                                    <div className={'productListAvatarLeft'}>
-                                        <Meta title={`${item.title}`} description={`${item.info}`} />
-                                    </div>
-                            
-                                    <div className={'productListAvatarRight'}>
-                                        <div className={'productListAvatarRightName'}>
-                                            {item.boss_name}
-                                        </div>
-                                
-                                        <div className={'productListAvatarRightAvatar'}>
-                                            <Avatar src={<img src={item.boss_avatar} alt="avatar" />} />
-                                        </div>
-                                    </div>
-                        
-                                </div>
+                            <Card
+                                bordered={true}
+                                style={{ width: 220 }}
+                                cover={
+                                    <img style={{height:200,padding:7}} src={item.img_path}/>
+                                }
+                            >
+                                <Meta
+                                    title={"$"+item.price}
+                                />
+                                 <Meta
+                                    avatar={<Avatar src={item.boss_avatar} />}
+                                    title={item.title}
+                                    description={item.info}
+                                />
+                                 
+                                 
                             </Card>
                         </Link>
                     ))
