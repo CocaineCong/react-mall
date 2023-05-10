@@ -3,13 +3,8 @@ import {Button, message, Form, Input, Alert} from 'antd';
 import {LockOutlined, MailOutlined, UserOutlined} from '@ant-design/icons';
 import {Link,useNavigate} from 'react-router-dom'
 import "../assets/styles/login.scss"
-import {ProFormCaptcha} from "@ant-design/pro-components";
-import {render} from "react-dom";
-import {values} from "lodash";
 import {login, register} from "../api/user";
 import {Code} from "../constant";
-import {save} from "../store/user";
-import {useDispatch} from "react-redux";
 import { AxiosResponse } from 'axios';
 
 
@@ -34,11 +29,12 @@ const Register: React.FC = () =>  {
 
     return (
         <div className="register">
-            <div className="register_box">
-                <div className='register_form'>
-                    <h1>REGISTER</h1>
-                    <h3>Hey! FanOne Mall Here: </h3>
-
+            <div className="registerBox">
+                <div className='registerForm'>
+                    <h1>注 册</h1>
+                    <h2> Welcome To FanOne Mall </h2> 
+                    <br></br>
+                    <br></br>
                     <Form
                         name="basic"
                         onFinish={onFinish}
@@ -46,7 +42,7 @@ const Register: React.FC = () =>  {
                     >
 
                         <Form.Item
-                            name="userName"
+                            name="user_name"
                             rules={[
                                 {
                                     required: true,
@@ -59,7 +55,7 @@ const Register: React.FC = () =>  {
                         </Form.Item>
 
                         <Form.Item
-                            name="nickName"
+                            name="nick_name"
                             rules={[
                                 {
                                     required: true,
@@ -80,7 +76,7 @@ const Register: React.FC = () =>  {
                                 },
                             ]}
                         >
-                            <Input.Password size='large' prefix={<LockOutlined className="site-form-item-icon" />} placeholder="请输入密码"/>
+                            <Input.Password size='large' prefix={<LockOutlined className="site-form-item-icon" />} placeholder="请输入登陆密码"/>
                         </Form.Item>
 
                         <Form.Item
@@ -88,11 +84,12 @@ const Register: React.FC = () =>  {
                             rules={[
                                 {
                                     required: true,
-                                    message: '请输入支付密码!',
+                                    // pattern: /^[a-zA-Z][a-zA-Z0-9_]{15}$/,
+                                    message: '请输入支付密码!支付密码只能为16位!',
                                 },
                             ]}
                         >
-                            <Input.Password size='large' prefix={<LockOutlined className="site-form-item-icon" />} placeholder="请再次输入密码"/>
+                            <Input.Password size='large' prefix={<LockOutlined className="site-form-item-icon" />} placeholder="请输入支付密码"/>
                         </Form.Item>
 
                         <Form.Item>
@@ -101,7 +98,7 @@ const Register: React.FC = () =>  {
 
                         <Form.Item>
                             <Button size='large' type="primary" htmlType="submit" block>
-                                注册
+                                注 册
                             </Button>
                         </Form.Item>
 

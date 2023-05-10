@@ -1,0 +1,27 @@
+.headerContainer{
+    margin-top: 10px;
+    height: 60px;
+    width: 100%;
+    background: white;
+  }
+  
+  .headerCenter{
+    width: 300px;
+    position: relative;
+    top: 10px;
+    left: 30%;
+  }
+  
+  .headerRight{
+    position: relative;
+    //background: #000;
+    height: 60px;
+    top: -44px;
+    width: 150px;
+    left: 85%;
+  }
+  
+  .headerImgBox{
+    width: 60px;
+    border-radius: 50%;
+  }

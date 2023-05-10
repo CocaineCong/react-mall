@@ -4,7 +4,7 @@
     height: 100vh;
     position: relative;
   
-    .login_box{
+    .loginBox{
       width: 500px;
       position: absolute;
       left: 70%;
@@ -23,23 +23,25 @@
     width: 100vw;
     height: 100vh;
     position: relative;
-    .register_box{
-        width: 500px;
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%,-50%);
-        border: 3px solid #999999;
-        border-radius: 5px;
-    }
+}
+
+.registerBox{
+    width: 500px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    border: 1px solid #736e6e;
+    border-radius: 5px;
+    box-shadow:4px 4px 15px rgb(64, 62, 62);
 }
   
-.login_form{
+.loginForm{
     width: 328px;
     margin: 0 auto;
 }
   
-.register_form{
+.registerForm{
     width: 328px;
     margin: 0 auto;
 }
@@ -61,13 +63,13 @@
   
 }
   
-.login_form_text{
+.loginFormText{
     top: 10px;
     position: relative;
     text-align: center;
 }
 
-.login_form_text_sub{
+.loginFormTextSub{
     position: relative;
     text-align: center;
     opacity:0.5;

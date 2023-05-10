@@ -12,6 +12,7 @@ import {ProFormCaptcha} from "@ant-design/pro-components";
 import {Code} from "../constant";
 import {save} from "../store/user";
 import {useDispatch} from "react-redux";
+import { AxiosResponse } from 'axios';
 
 const LoginBody: React.FC = () => {
     const navigate = useNavigate()
@@ -29,7 +30,7 @@ const LoginBody: React.FC = () => {
         if (data.status === Code.SuccessCode) {
             dispatch(save({...data.data.user, access_token: data.data.access_token,refresh:data.data.refresh_token}));
             message.success("登陆成功")
-            // navigate('/Story/List');
+            navigate('/');
         } else {
             message.error("账号名/密码错误")
         }
@@ -59,10 +60,10 @@ const LoginBody: React.FC = () => {
                     </Button>
                 </div>
             </div>
-            <div className="login_box">
-                <div className='login_form'>
-                    <h1 className={'login_form_text'}> LOGIN </h1>
-                    <p className={'login_form_text_sub'}>FanOne Mall</p>
+            <div className="loginBox">
+                <div className='loginForm'>
+                    <h1 className={'loginFormText'}> 登 陆 </h1>
+                    <p className={'loginFormTextSub'}>FanOne Mall</p>
                     <Tabs centered activeKey={loginType} onChange={setLoginType} items={items}></Tabs>
 
                     {
