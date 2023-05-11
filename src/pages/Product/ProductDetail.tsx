@@ -9,7 +9,7 @@ const ProductDetails: React.FC = () => {
   };
 
   return (
-    <div>SSS</div>
+    <div></div>
   );
 };
 

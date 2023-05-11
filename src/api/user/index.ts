@@ -26,3 +26,9 @@ export async function register(body: API.UserRegisterReq, options?: { [key: stri
         ...(options||{}),
     })
 }
+
+export async function getPersonInfo() {
+    return instance<API.CommonResp>(userBaseUrl+'show_info',{
+        method:'GET',
+    })
+}

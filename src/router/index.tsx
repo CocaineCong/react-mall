@@ -7,6 +7,9 @@ const Register = lazy(()=>import("../pages/Register"))
 const Home = lazy(()=>import("../pages/Home"))
 const ProductList = lazy(()=>import("../pages/Product/ProductList"))
 const ProductDetails = lazy(()=>import("../pages/Product/ProductDetail"))
+const PersonCenter = lazy(()=>import("../pages/Person/PersonCenter"))
+const PersonEmail = lazy(()=>import("../pages/Person/PersonEmail"))
+const PersonInfo = lazy(()=>import("../pages/Person/PersonInfo"))
 const NoFoundPage = lazy(()=>import("../pages/NotFound"))
 
 const withLoadingComponent = (comp:JSX.Element)=>(
@@ -31,6 +34,24 @@ const router: RouteObject[] = [
                 element:withLoadingComponent(<ProductDetails />)
             }
         ]
+    },
+    {
+        path: "/PersonCenter",
+        element: withLoadingComponent(<PersonCenter />),
+        children:[
+            {
+                path:"/PersonCenter/PersonInfo",
+                element: withLoadingComponent(<PersonInfo />),
+            },
+            // {
+            //     path: "/PersonCenter/PersonProduct",
+            //     element: withLoadingComponent(<PersonProduct />)
+            // },
+            {
+                path: "/PersonCenter/PersonEmail",
+                element: withLoadingComponent(<PersonEmail />)
+            },
+        ],
     },
     {path: "*", element: withLoadingComponent(<NoFoundPage />),},
 ]
