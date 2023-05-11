@@ -6,6 +6,7 @@ const Login = lazy(()=>import("../pages/Login"))
 const Register = lazy(()=>import("../pages/Register"))
 const Home = lazy(()=>import("../pages/Home"))
 const ProductList = lazy(()=>import("../pages/Product/ProductList"))
+const ProductDetails = lazy(()=>import("../pages/Product/ProductDetail"))
 const NoFoundPage = lazy(()=>import("../pages/NotFound"))
 
 const withLoadingComponent = (comp:JSX.Element)=>(
@@ -24,6 +25,10 @@ const router: RouteObject[] = [
             {
                 path:"/Product/List",
                 element:withLoadingComponent(<ProductList />)
+            },
+            {
+                path:"/Product/Details",
+                element:withLoadingComponent(<ProductDetails />)
             }
         ]
     },

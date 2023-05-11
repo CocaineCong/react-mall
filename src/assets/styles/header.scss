@@ -1,27 +1,26 @@
 .headerContainer{
-    margin-top: 10px;
-    height: 60px;
-    width: 100%;
-    background: white;
-  }
-  
-  .headerCenter{
-    width: 300px;
-    position: relative;
-    top: 10px;
-    left: 30%;
-  }
-  
-  .headerRight{
-    position: relative;
-    //background: #000;
-    height: 60px;
-    top: -44px;
-    width: 150px;
-    left: 85%;
-  }
-  
-  .headerImgBox{
-    width: 60px;
-    border-radius: 50%;
-  }
+  margin-top: 10px;
+  height: 45px;
+  width: 100%;
+  background: white;
+}
+
+.headerCenter{
+  width: 70%;
+  position: relative;
+  top: 10px;
+  left: 7%;
+}
+
+.headerRight{
+  position: relative;
+  height: 60px;
+  top: -35px;
+  width: 12%;
+  left: 85%;
+}
+
+.headerImgBox{
+  width: 50px;
+  border-radius: 50%;
+}
