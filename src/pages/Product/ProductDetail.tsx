@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, Form, Input, Button } from 'antd';
 import { ArrowLeftOutlined } from '@ant-design/icons';
-import '../../assets/styles/ProductDetails.scss'
+import '../../assets/styles/product-details.scss'
 
 const ProductDetails: React.FC = () => {
   const onFinish = (values:any) => {

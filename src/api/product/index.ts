@@ -21,3 +21,15 @@ export async function getProduct (id?:any, options?: { [key: string]: any }) {
         ...(options || {}),
     });
 }
+
+export async function createProduct(body:API.ProductCreateReq,options?:{[key:string]:any}){
+    let params = new FormData();
+    _.forIn(body,function(value,key){
+        return params.append(key,value);
+    })
+    return instance<API.CommonResp>(productBaseUrl+`show`,{
+        method:'POST',
+        data:params,
+        ...(options||{}),
+    });
+}

@@ -43,6 +43,7 @@ function PersonInfoModel(){
 
     const GetUserInfo = async () => {
         const res:any = await getPersonInfo()
+        console.log("res:any",res)
         if(res.status === Code.SuccessCode){
             let { email, nick_name } = res.data;
             setNickName(nick_name)

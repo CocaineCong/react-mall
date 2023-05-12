@@ -32,3 +32,15 @@ export async function getPersonInfo() {
         method:'GET',
     })
 }
+
+export async function changeAvatar(body: { file: string }, options?: { [key: string]: any }) {
+    let params = new FormData();
+    _.forIn(body, function (value, key) {
+      return params.append(key, value);
+    })
+    return instance<API.CommonResp>(userBaseUrl+`avatar`, {
+      method: 'POST',
+      data: params,
+      ...(options || {}),
+    });
+  }

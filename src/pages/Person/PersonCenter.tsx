@@ -1,9 +1,8 @@
 import { Layout, Menu, theme } from 'antd';
 import React, { useState } from 'react';
 import PersonCenterSider from './PersonCenterSider'
-import '../../assets/styles/personCenter.scss'
+import '../../assets/styles/person-center.scss'
 import {Outlet, useRoutes} from "react-router-dom";
-import PersonInfoModel from "./PersonInfo";
 import Header from "../../components/Header"
 const { Content } = Layout;
 
