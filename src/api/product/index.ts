@@ -27,7 +27,7 @@ export async function createProduct(body:API.ProductCreateReq,options?:{[key:str
     _.forIn(body,function(value,key){
         return params.append(key,value);
     })
-    return instance<API.CommonResp>(productBaseUrl+`show`,{
+    return instance<API.CommonResp>(productBaseUrl+`create`,{
         method:'POST',
         data:params,
         ...(options||{}),

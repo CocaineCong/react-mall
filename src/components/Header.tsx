@@ -54,7 +54,7 @@ const Header: React.FC = () =>{
         {
             key: '2',
             label: (
-                <Link target="_blank" to={'/CreateProduct'}>
+                <Link target="_blank" to={'/ProductCreate'}>
                     发布商品
                 </Link>
             ),

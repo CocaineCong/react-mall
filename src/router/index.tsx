@@ -10,6 +10,7 @@ const ProductDetails = lazy(()=>import("../pages/Product/ProductDetail"))
 const PersonCenter = lazy(()=>import("../pages/Person/PersonCenter"))
 const PersonEmail = lazy(()=>import("../pages/Person/PersonEmail"))
 const PersonInfo = lazy(()=>import("../pages/Person/PersonInfo"))
+const ProductCreate = lazy(()=>import("../pages/Product/ProductCreate"))
 const NoFoundPage = lazy(()=>import("../pages/NotFound"))
 
 const withLoadingComponent = (comp:JSX.Element)=>(
@@ -53,6 +54,7 @@ const router: RouteObject[] = [
             },
         ],
     },
+    {path: "/ProductCreate", element: withLoadingComponent(<ProductCreate />),},
     {path: "*", element: withLoadingComponent(<NoFoundPage />),},
 ]
 
