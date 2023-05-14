@@ -24,6 +24,7 @@ const Header: React.FC = () =>{
     // 退出登录
     const logout = ()=>{
         localStorage.removeItem("access_token");
+        localStorage.removeItem("refresh_token");
         message.success('退出成功,即将返回登录页');
         setTimeout(()=>navigate('/Login'),800)
     };

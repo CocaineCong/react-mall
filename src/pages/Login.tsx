@@ -28,7 +28,7 @@ const LoginBody: React.FC = () => {
     }) => {
         const data:any = await login({...values});
         if (data.status === Code.SuccessCode) {
-            dispatch(save({...data.data.user, access_token: data.data.access_token,refresh:data.data.refresh_token}));
+            dispatch(save({...data.data.user, access_token: data.data.access_token,refresh_token:data.data.refresh_token}));
             message.success("登陆成功")
             navigate('/');
         } else {

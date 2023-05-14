@@ -1,6 +1,6 @@
 import React, { useState,useEffect } from 'react';
-import { InfoCircleOutlined } from '@ant-design/icons';
-import { Button, Form, Input, DatePicker, message } from 'antd';
+import { InfoCircleOutlined,PlusOutlined } from '@ant-design/icons';
+import { Button, Form, Input, Upload, message, Select } from 'antd';
 import "../../assets/styles/product-create.scss"
 import CollectionCreateForm from "../../components/ProductDetailUploadImg"
 import _ from "lodash";
@@ -8,6 +8,11 @@ import { createProduct } from '../../api/product';
 import feedBack from "../../utils/apiFeedback";
 import {useNavigate} from "react-router-dom";
 import { getCategoryListAPI } from '../../api/category';
+import {
+    Image,
+  } from "antd-mobile";
+import { Code } from '../../constant';
+const {Option} = Select;
 
 type RequiredMark = boolean | 'optional';
 
@@ -15,61 +20,53 @@ const ProductDetailCreate: React.FC = () => {
     const navigate = useNavigate();
     const [form] = Form.useForm();
     const [file, setFile] = useState()
+    const [formData, setFormData] = useState<object>();
     const [imageUrl, setImageUrl] = useState<string>('');
     const [requiredMark, setRequiredMarkType] = useState<RequiredMark>('optional');
     const [categoryList, setCategoryList] = useState<API.CategoryListDataItem[]>();
     const [content,setContent]=useState('')
     const [open, setOpen] = useState(false);
     
-    const onCreate = (values: any) => {
-        console.log('Received values of form: ', values);
-        setOpen(false);
-    };
-    
-    const onRequiredTypeChange = ({ requiredMarkValue }: { requiredMarkValue: RequiredMark }) => {
-        setRequiredMarkType(requiredMarkValue);
-    };
-    
-    const handleEditorChange = (text: string) => {
-        setContent(text)
-    }
-
     const sendCategoryApi = async (key?: number) => {
         const data:any = await getCategoryListAPI()
-        setCategoryList(data?.data?.item);
+        if(data.status === Code.SuccessCode){
+            setCategoryList(data?.data?.item);
+        }else{
+            message.error(data?.data?.msg)
+        }
     }
 
     const getBase64 = (img: any, callback: any) => {
         const reader = new FileReader();
         reader.addEventListener('load', () => callback(reader.result));
         reader.readAsDataURL(img);
-      };
+    };
+
     const beforeUpload = (file: any) => {
-    //控制上传图片格式
-    const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
-    if (!isJpgOrPng) {
-        message.error({
-            icon: 'fail',
-            content: '您只能上传JPG/PNG 文件!',
-        });
-        return;
-    }
-    const isLt2M = file.size / 1024 / 1024 < 2;
-    if (!isLt2M) {
-        message.error({
-            icon: 'fail',
-            content: '图片大小必须小于2MB!',
-        });
-        return;
-    }
-    if (isJpgOrPng && isLt2M) {
-        getBase64(file, (imageUrl: any) => {
-        // setLoading(false);
-        setImageUrl(imageUrl);
-        });
-        setFile(file);
-    }
-    return false;
+        //控制上传图片格式
+        const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
+        if (!isJpgOrPng) {
+            message.error({
+                icon: 'fail',
+                content: '您只能上传JPG/PNG 文件!',
+            });
+            return;
+        }
+        const isLt2M = file.size / 1024 / 1024 < 2;
+        if (!isLt2M) {
+            message.error({
+                icon: 'fail',
+                content: '图片大小必须小于2MB!',
+            });
+            return;
+        }
+        if (isJpgOrPng && isLt2M) {
+            getBase64(file, (imageUrl: any) => {
+                setImageUrl(imageUrl);
+            });
+            setFile(file);
+        }
+        return false;
     };
 
     useEffect(() => {
@@ -78,6 +75,7 @@ const ProductDetailCreate: React.FC = () => {
 
     const onFinish = async (values:any)=>{
         let v = _.cloneDeep(values)
+        console.log("v",v)
         createProduct({
             ...v,
             image:values?.image?.file,
@@ -94,50 +92,63 @@ const ProductDetailCreate: React.FC = () => {
                 <Form
                     form={form}
                     layout="vertical"
-                    initialValues={{ requiredMarkValue: requiredMark }}
-                    onValuesChange={onRequiredTypeChange}
                     requiredMark={requiredMark}
+                    onValuesChange={(_, allValues) => {
+                        setFormData({...allValues})
+                      }}
+                    initialValues={formData ? {
+                    ...formData,
+                    image: "image"
+                    } : {
+                    image: "image"
+                    }}
+                    onFinish={onFinish}
                 >
-                    <Form.Item label="名字" required tooltip="This is a required field">
-                        <Input placeholder="input placeholder" />
+                    <Form.Item label="名字" name="name" required tooltip="This is a required field">
+                        <Input placeholder="请输入商品名字" />
                     </Form.Item>
-                    <Form.Item label="标题" required tooltip="This is a required field">
-                        <Input placeholder="input placeholder" />
+                    <Form.Item label="标题" name="title" required tooltip="This is a required field">
+                        <Input placeholder="请输入商品标题" />
                     </Form.Item>
-                    <Form.Item label="价格" required tooltip="This is a required field">
-                        <Input placeholder="input placeholder" />
+                    <Form.Item label="价格" name="price" required tooltip="This is a required field">
+                        <Input placeholder="请输入商品价格" />
                     </Form.Item>
-                    <Form.Item label="优惠的价格" required tooltip="This is a required field">
-                        <Input placeholder="input placeholder" />
+                    <Form.Item label="优惠的价格" name="discount_price" required tooltip="This is a required field">
+                        <Input placeholder="请输入商品优惠后的价格" />
                     </Form.Item>
-                    <Form.Item label="数量" required tooltip="This is a required field">
-                        <Input placeholder="input placeholder" />
+                    <Form.Item label="数量" name="num" required tooltip="This is a required field">
+                        <Input placeholder="请输入商品数量" />
                     </Form.Item>
+                    {/* TODO 有问题 */}
+                    {/* <Form.Item label="分类" name="category" required tooltip="This is a required field">
+                        <Select>
+                            {categoryList?.map(value => <Option value={categoryList.category_name || ''}>{categoryList.category_name}</Option>)}
+                        </Select>
+                    </Form.Item> */}
                     <Form.Item
                         label="简述"
+                        name="info"
                         tooltip={{ title: 'Tooltip with customize icon', icon: <InfoCircleOutlined /> }}
                     >
-                        <Input placeholder="input placeholder" />
-                    </Form.Item>
-                    <Form.Item>
-                        <Button
-                            type="primary"
-                            onClick={() => {
-                                setOpen(true);
-                            }}
+                        <Input placeholder="请输入商品详情" />
+                    </Form.Item>   
+                    <Form.Item name='image' rules={[{required: true, message: "请输入必填信息"}]} label='封面图' className="apply-upload">
+                        <Upload
+                            name="image"
+                            listType="picture-card"
+                            className="cover_img"
+                            showUploadList={false}
+                            beforeUpload={beforeUpload}
+                            // onChange={handleChange}
+                            accept="image/gif,image/jpeg,image/jpg,image/png,image/svg"
+                            action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
                         >
-                            提交
-                        </Button>
-                        
-                        <CollectionCreateForm
-                            open={open}
-                            onCreate={onCreate}
-                            onCancel={() => {
-                                setOpen(false);
-                            }}
-                        />
+                            {imageUrl ? <Image src={imageUrl} alt="img" className="cover_img" fit="cover"/> : <PlusOutlined/>}
+                        </Upload>
                     </Form.Item>
-    
+                    <Form.Item name="submit">
+                        <Button htmlType="submit" size='large'>创建</Button>
+                    </Form.Item>    
                 </Form>
             </div>
         </div>

@@ -1,0 +1,45 @@
+#app{
+    width: 100vw;
+    height: auto;
+    //height: 100vh;
+  }
+  
+.container{
+    width: 100%;
+    height: auto;
+}
+  
+.containerBox{
+    width: 100%;
+    height: auto;
+}
+  
+.containerContent{
+    width: 100%;
+    height: auto;
+}
+
+.footerContent{
+    position: relative;
+    height: 30px;
+    background: #001529;
+    color: #fff;
+    text-align: center;
+    line-height: 30px;
+    top: 90%;
+}
+
+.coverImg{
+    width: 200px;
+    height: auto;
+}
+
+.publishSuccessBox {
+    background: white;
+}
+
+.publishSuccess{
+    margin: 250px auto;
+    border-radius: 20px;
+    background: #ffffff;
+}
