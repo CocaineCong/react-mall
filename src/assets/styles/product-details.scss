@@ -1,14 +1,15 @@
 .detail-content {
+
     display: flex;
     overflow: hidden;
     justify-content: space-between;
   
     .info {
-      width: 774px;
+      width: 70%;
     }
   
     .best {
-      width: 262px;
+      width: 25%;
       overflow: hidden;
       // 头部店铺信息
       .flagship {
@@ -304,3 +305,6 @@
     }
   }
   
+
+
+

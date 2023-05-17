@@ -1,10 +1,11 @@
 .detail-header {
+  margin-left: 40%;
   margin-bottom: 67px;
   height: auto !important;
   display: flex;
 
   .sku-container {
-    width: 70%;
+    width: 100%;
     display: flex;
     margin-left: 5%;
     flex-direction: column;
@@ -562,4 +563,8 @@
 .tag-item-onSelected:hover,
 .tag-item-offSaled:hover {
   cursor: pointer;
+}
+
+.detail-wrapper{
+    // width: 50%;
 }

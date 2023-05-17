@@ -1,0 +1,22 @@
+.detail-imglist{
+    margin-left: 10%;
+    width: 20%;
+    height: auto !important;
+    display: flex;
+    z-index: 100;
+  
+    .product-carousel {
+      display: flex;
+      width: 100px; /* 调整轮播图容器宽度 */
+      height: 100px; /* 调整轮播图容器高度 */
+      margin: 0 auto; /* 居中对齐 */
+    }
+  
+    .carousel-image {
+      width: 100%; /* 图片宽度占满父容器 */
+      height: 100%; /* 图片高度占满父容器 */
+      object-fit: cover; /* 等比例缩放图片以填充父容器 */
+    }
+      
+  }
+  

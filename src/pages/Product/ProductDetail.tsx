@@ -6,11 +6,13 @@ import { useLocation,useParams } from 'react-router-dom';
 import { getProduct, getProductImg } from '../../api/product';
 import { Code } from '../../constant';
 import ProductDetailHeader from './ProductDetailHeader';
+import ProductDetailsImgList from '../../components/ProductDetailImgList';
 
 const { TabPane } = Tabs;
 
 const ProductDetails: React.FC = () => {
-  const { id } = useParams();
+  const {id} = useParams();
+  const productId:string = id || ''
   const [productDetail,setProductDetail]=useState();
   const [goodsInfo,setGoodsInfo]=useState();
   const [imgList,setImgList]=useState<API.ProductImgListResp[]>();
@@ -60,6 +62,9 @@ const ProductDetails: React.FC = () => {
     <div className="detail">
       <div className="container">
           <div className="detail-wrapper">
+            <div className="detail-imglist">
+              {/* <ProductDetailsImgList productId={productId}/> */}
+            </div>
             <ProductDetailHeader />
             <div className="detail-content">
               <div className="info">
