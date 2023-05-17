@@ -10,14 +10,23 @@ export async function listProduct (body?: API.ProductListReq, options?: { [key: 
     })
     return instance<API.ProductListResp>(productBaseUrl+`list`, {
         method: 'GET',
-        data:params,
+        params:params,
         ...(options || {}),
     });
 }
 
-export async function getProduct (id?:any, options?: { [key: string]: any }) {
+export async function getProduct (body?:any, options?: { [key: string]: any }) {
     return instance<API.CommonResp>(productBaseUrl+`show`, {
         method: 'GET',
+        params:body,
+        ...(options || {}),
+    });
+}
+
+export async function getProductImg (body?:any, options?: { [key: string]: any }) {
+    return instance<API.CommonResp>(productBaseUrl+`imgs/list`, {
+        method: 'GET',
+        params:body,
         ...(options || {}),
     });
 }

@@ -42,7 +42,7 @@ const ProductList: React.FC = () => {
             <div className='productCardList'>
                 {
                     items?.map((item)=>(
-                        <Link className='productList' to={`/product/${item.id}`} target="_blank" key={item.id}>
+                        <Link className='productList' to={`/Product/Details/${item.id}`} target="_blank" key={item.id}>
                             <Card
                                 bordered={true}
                                 style={{ width: 220 }}

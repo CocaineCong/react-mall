@@ -32,9 +32,10 @@ const router: RouteObject[] = [
                 element:withLoadingComponent(<ProductList />)
             },
             {
-                path:"/Product/Details",
+                path:"/Product/Details/:id",
                 element:withLoadingComponent(<ProductDetails />)
-            }
+            },    
+            
         ]
     },
     {
@@ -45,10 +46,6 @@ const router: RouteObject[] = [
                 path:"/PersonCenter/PersonInfo",
                 element: withLoadingComponent(<PersonInfo />),
             },
-            // {
-            //     path: "/PersonCenter/PersonProduct",
-            //     element: withLoadingComponent(<PersonProduct />)
-            // },
             {
                 path: "/PersonCenter/PersonEmail",
                 element: withLoadingComponent(<PersonEmail />)

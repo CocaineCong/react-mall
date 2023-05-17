@@ -1,0 +1,306 @@
+.detail-content {
+    display: flex;
+    overflow: hidden;
+    justify-content: space-between;
+  
+    .info {
+      width: 774px;
+    }
+  
+    .best {
+      width: 262px;
+      overflow: hidden;
+      // 头部店铺信息
+      .flagship {
+        padding-bottom: 13px;
+        margin-bottom: 17px;
+        border-bottom: 1px solid #e7e7e7;
+  
+        .icon-container {
+          height: 30px;
+          line-height: 30px;
+          font-size: 14px;
+          color: #333;
+          display: flex;
+          justify-content: space-between;
+  
+          img {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+          }
+  
+          .title-container {
+            display: flex;
+            flex-direction: column;
+            width: 156px;
+  
+            .title-content {
+              display: flex;
+              align-items: center;
+  
+              h6 {
+                overflow: hidden;
+                line-height: 14px;
+                font-size: 14px;
+                font-weight: 400;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                margin: 0;
+              }
+  
+              .title-tag {
+                display: inset-block;
+                border: 1px solid #bf1111;
+                color: #bf1111;
+                padding: 2px 4px;
+                border-radius: 8px;
+                font-size: 12px;
+                text-align: center;
+                vertical-align: middle;
+                line-height: 1;
+                white-space: nowrap;
+                margin-left: 6px;
+              }
+            }
+  
+            p {
+              margin-top: 4px;
+              line-height: 12px;
+              font-size: 12px;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+            }
+          }
+  
+          .enter-btn {
+            .ant-btn {
+              min-width: 48px;
+              line-height: 30px;
+              border-radius: 3px;
+              overflow: hidden;
+              padding: 0;
+              height: 30px;
+            }
+          }
+        }
+      }
+  
+      // 相关推荐
+      .recommend-title {
+        text-align: center;
+        color: #333;
+        font-size: 16px;
+        font-weight: 400;
+        height: 42px;
+        line-height: 42px;
+        margin-bottom: 17px;
+  
+        .special-line {
+          margin: 0 12px;
+          display: inline-block;
+          width: 16px;
+          border-top: 1px solid #333;
+          height: 21px;
+          vertical-align: bottom;
+        }
+      }
+    }
+  }
+  
+  /* tabs  */
+  .main-body {
+    .comment-top-container {
+      margin: 16px 0;
+      /* 头部 */
+  
+      .comment-top-positive-rate {
+        line-height: 40px;
+        color: #845f3f;
+      }
+  
+      /* 卡片切换部分 */
+  
+      .comment-top-tabs {
+        padding-top: 5px;
+        text-align: center;
+  
+        .tabbar-container {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: start;
+          align-items: center;
+  
+          .tabbar-item {
+            margin-bottom: 10px;
+            margin-right: 10px;
+          }
+  
+          .ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled) {
+            background: #845f3f;
+            color: white;
+            border: 1px solid #845f3f;
+          }
+        }
+      }
+    }
+  }
+  
+  .detail-content > * {
+    box-sizing: content-box;
+  }
+  
+  /* tabs magrin */
+  .ant-tabs-top > .ant-tabs-nav,
+  .ant-tabs-bottom > .ant-tabs-nav,
+  .ant-tabs-top > div > .ant-tabs-nav,
+  .ant-tabs-bottom > div > .ant-tabs-nav {
+    margin: 0;
+  }
+  
+  .ant-tabs-nav {
+    background-color: #e7e7e7 !important;
+  }
+  
+  .ant-tabs-tab {
+    width: 129px;
+    display: flex;
+    height: 13px;
+    margin: 0 !important;
+    justify-content: center;
+    align-items: centerf;
+    border-right-style: solid;
+    border-right-color: rgb(204, 204, 204);
+    border-right-width: 1px;
+  }
+  
+  .ant-tabs-nav-list {
+    height: 45px;
+    display: flex;
+    align-items: center;
+  
+  }
+  
+  .ant-tabs-tab-btn {
+    font-size: 13px;
+  }
+  
+  .ant-fade-leave.ant-fade-leave-active {
+    display: none;
+  }
+  
+  .ant-fade-enter-active {
+    animation-name: antFadeIn !important;
+  }
+  
+  /* 评论部分样式 */
+  .comment-items {
+    width: 774px;
+    position: relative;
+  
+    .comment-item {
+      width: 100%;
+      position: relative;
+  
+      .t-div {
+        margin-top: 35px;
+        display: flex;
+  
+        .myimg {
+          height: 44px;
+          width: 44px;
+          border-radius: 50%;
+          background: #eee;
+          overflow: hidden;
+  
+        }
+  
+        .info {
+          margin-left: 30px;
+  
+          .name {
+            font-size: 18px;
+          }
+  
+          .attach {
+            font-size: 12px;
+            color: #999;
+            margin-top: 5px;
+  
+            .margin {
+              margin: 0 10px;
+            }
+          }
+        }
+      }
+  
+      .m-div {
+        margin: 10px 0 10px 66px;
+        font-size: 14px;
+        line-height: 24px;
+        color: #333;
+      }
+  
+      .img-div {
+        margin-top: 10px;
+        margin-bottom: 24px;
+        margin-left: 64px;
+      }
+  
+      .b-div {
+        margin-top: 24px;
+        height: 1px;
+        width: 711px;
+        margin-left: 64px;
+        background: #eee;
+      }
+    }
+  }
+  
+  .ant-image {
+    margin-right: 5px;
+  }
+  
+  .ant-tabs-nav-operations {
+    display: none;
+  }
+
+  .detail {
+    width: 100%;
+    min-height: 285px;
+    padding-top: 60px;
+    padding-bottom: 100px;
+    overflow: hidden;
+    border-top: 1px solid #e7e7e7;
+  
+    .container > * {
+      box-sizing: content-box;
+      min-height: inherit;
+      position: relative;
+    }
+  
+    .detail-exception {
+      margin-top: 77px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+    }
+  
+    .m-exception .e-img {
+      width: 153px;
+      height: 132px;
+      margin: 0 auto;
+      background-repeat: no-repeat;
+      background-size: 100%;
+    }
+  
+    .m-no-network .e-img {
+      background-image: url("../images/img_error.png");
+    }
+  
+    p {
+      margin-top: 20px;
+    }
+  }
+  

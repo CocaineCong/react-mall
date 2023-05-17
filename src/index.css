@@ -1,13 +1,52 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  color: #333;
+  font-size: 14px;
+  min-width: 1080px;
+  font-family: Helvetica Neue,Helvetica,Arial,Microsoft Yahei,Hiragino Sans GB,Heiti SC,WenQuanYi Micro Hei,sans-serif;
+}
+a{
+  cursor: pointer;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* 阿里图标 */
+.iconfont {
+  color: white;
+  margin: 0 4px;
+}
+
+/* 页面总体布局 */
+.container { 
+  width: 1080px;
+  margin: 0 auto;
+}
+
+/* 主页面 div的title */
+.subTit {
+  color: #333;
+  font-size: 28px;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+}
+.subTit span {
+  color: #999;
+  font-size: 14px;
+  margin-left: 12px;
+  display: flex;
+  align-items: flex-end;
+}
+
+.margin-left-0 {
+  margin-left: 0;
+}
+
+/* 默认 */
+.label {
+  margin-right: 10px;
+  padding: 2px 5px;
+  font-size: 12px;
+  line-height: 14px;
+  color: #fff;
+  background-color: #c00000;
+  border-radius: 2px;
 }

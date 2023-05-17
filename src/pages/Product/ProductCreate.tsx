@@ -81,7 +81,7 @@ const ProductDetailCreate: React.FC = () => {
             image:values?.image?.file,
         }).then(res=>{
             if (feedBack(res, "创建成功并提交审核", "创建失败")) {
-                navigate("/home");
+                navigate("/PublishSuccess");
               }
         })
     }

@@ -1,0 +1,182 @@
+body {
+  color: #333;
+  font-size: 14px;
+  min-width: 1080px;
+  font-family: Helvetica Neue, Helvetica, Arial, Microsoft Yahei,
+  Hiragino Sans GB, Heiti SC, WenQuanYi Micro Hei, sans-serif;
+}
+
+a {
+  cursor: pointer;
+}
+
+/* 阿里图标 */
+.iconfont {
+  color: white;
+  margin: 0 4px;
+}
+
+/* 页面总体布局 */
+.container {
+  width: 1080px;
+  margin: 0 auto;
+}
+
+/* 主页面 div的title */
+.subTit {
+  color: #333;
+  font-size: 28px;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+}
+
+.subTit span {
+  color: #999;
+  font-size: 14px;
+  margin-left: 12px;
+  display: flex;
+  align-items: flex-end;
+}
+
+.margin-left-0 {
+  margin-left: 0;
+}
+
+/* 默认 */
+.label {
+  margin-right: 10px;
+  padding: 2px 5px;
+  font-size: 12px;
+  line-height: 14px;
+  color: #fff;
+  background-color: #c00000;
+  border-radius: 2px;
+}
+
+.ant-btn-primary:hover {
+  border-color: rgb(209, 191, 166) !important;
+  color: white;
+  background-color: rgb(209, 191, 166) !important;
+}
+
+.m-btn-middle {
+  min-width: 167px;
+  height: 52px;
+  font-size: 20px;
+}
+
+*::selection {
+  color: #fff;
+  background-color: #1890ff;
+}
+
+.count-container {
+  display: flex;
+}
+
+.minus-btn {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #d6d6d6;
+  box-sizing: content-box;
+  text-align: center;
+  color: #d6d6d6;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  .iconfont {
+    color: #ccc;
+    font-weight: bolder;
+  }
+}
+
+// 商品数量 添加减少按钮部分
+.minus-btn {
+  cursor: not-allowed;
+}
+
+.minus-btn-active {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #d6d6d6;
+  box-sizing: content-box;
+  text-align: center;
+  color: #d6d6d6;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  .iconfont {
+    font-weight: bolder;
+  }
+}
+
+.count-input {
+  width: 60px;
+  height: 30px;
+  padding: 0;
+  box-sizing: content-box;
+  border-color: #d6d6d6;
+  border-style: solid;
+  border-width: 1px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 14px;
+  color: #333;
+  outline: none;
+}
+
+.count-input:hover {
+  box-shadow: none;
+  // border: none;
+}
+
+//按钮统一样式
+.m-btns {
+  display: inline-block;
+  border-radius: 2px;
+  text-align: center;
+  //border: 1px solid #666;
+  box-sizing: border-box;
+  //padding: 0 6px;
+  transition: all .5s cubic-bezier(0, 1, .5, 1);
+}
+
+.m-btns:hover {
+  background-color: #845f3f;
+  color: white !important;
+}
+
+
+// 地址列表公共样式
+.address-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+
+}
+
+//抽屉
+.ant-drawer-content-wrapper {
+  width: 50% !important;
+  height: 50% !important;
+  top: 20% !important;
+  right: 20% !important;
+}
+
+.ant-drawer {
+  pointer-events: none;
+}
+
+.ant-drawer-title {
+  display: flex;
+  justify-content: center;
+}
+
+.ant-drawer-body {
+  display: flex;
+  justify-content: center;
+}

@@ -13,7 +13,6 @@ const Home: React.FC = () => {
             <HomeSider />
             <Layout className="site-layout" style={{ marginLeft: 200,background:'white' }}>
                 <Header  />
-                <Divider plain />
                 <Content style={{overflow: 'initial' }}>
                     <Outlet />
                 </Content>

@@ -7,12 +7,15 @@ import {message} from "antd";
 import {Layout} from "antd";
 
 function App() {
+  const location = useLocation()
   return (
       <div className="App">
           <Layout>
             <BeforeRouterEnter />
           </Layout>
-        <Footer className="footer">FanOneMall | Copyright &copy; 2023 Author FanOne</Footer>
+      {location.pathname === '/Login' ? null : <Footer />}
+     {/* {location.pathname === '/Login' ? null : <FixedBar />}   */}
+        {/* <Footer className="footer">FanOneMall | Copyright &copy; 2023 Author FanOne</Footer> */}
       </div>
   );
 }

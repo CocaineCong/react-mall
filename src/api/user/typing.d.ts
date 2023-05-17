@@ -15,6 +15,10 @@ declare namespace API {
         key:string;
     }
 
+    export type UpdateUserInfoReq = {
+        nick_name:string;
+    }
+
     export type UserLoginReq = {
         user_name:string;
         password:string;

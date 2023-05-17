@@ -13,6 +13,11 @@ declare namespace API {
         id:number;
     }
 
+    export type ProductImgListResp = {
+        product_id:number;
+        img_path:string;
+    }
+
     export type ProductListReq = {
         page_size:number;
         page_num:number;

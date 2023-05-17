@@ -1,0 +1,35 @@
+.footer {
+    margin-top: 60px;
+    padding: 45px 0;
+    line-height: 23px;
+    border-top: 1px solid #e7e7e7;
+    background-color: #fff;
+    color: #666;
+    .container {
+      display: flex;
+      justify-content: space-between;
+      .left-logo > {
+        width: 123px;
+        height: 45px;
+        margin-right: 25px;
+      }
+      .right-info {
+        font-size: 12px;
+        display: flex;
+        .footer-item > span {
+          margin-right: 5px;
+        }
+        .footer-item > a {
+          color: #666;
+        }
+        .f-icons {
+          padding-left: 138px;
+          font-size: 12px;
+          img {
+            width: 100px;
+          }
+        }
+      }
+    }
+  }
+  
