@@ -75,7 +75,6 @@ const ProductDetailCreate: React.FC = () => {
 
     const onFinish = async (values:any)=>{
         let v = _.cloneDeep(values)
-        console.log("v",v)
         createProduct({
             ...v,
             image:values?.image?.file,
