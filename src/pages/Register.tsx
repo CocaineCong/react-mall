@@ -16,14 +16,14 @@ const Register: React.FC = () =>  {
         password: string
         key: string
     })=>{
-        const data:AxiosResponse<API.CommonResp> = await register({...values});
+        const data:any = await register({...values});
         if (data.status === Code.SuccessCode) {
             message.success("注册成功")
             setTimeout(()=>{
                 navigate('/login')
             } ,800)
         } else {
-            message.error(data.data.msg)
+            message.error(data?.msg)
         }
     }
 

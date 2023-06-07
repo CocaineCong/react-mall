@@ -3,31 +3,47 @@ import '../../assets/styles/product-details-header.scss';
 import { connect } from 'react-redux';
 import { Button, Input, message, Radio } from 'antd';
 import qs from 'qs';
+import { useParams } from 'react-router-dom';
+import { getProduct } from '../../api/product';
+import { Code } from '../../constant';
+import { createCartAPI } from '../../api/cart';
 
 const ProductDetailHeader: React.FC = () =>{
+  const {id} = useParams();
   const [giftIsShow, setGiftIsShow] = useState(false); // 是否隐藏显示赠品详情
   const [productNum, setProductNum] = useState(1); // 商品件数
-//   const [goodsInfo, setGoodsInfo] = useState({}); // 基本商品信息
   const [services, setServices] = useState([{"text":"假一赔十！"}]); // 服务信息
 //   const [brandInfo, setBrandInfo] = useState({}); // 商家信息
   const [goodsSkus, setGoodsSkus] = useState([]); // 商品sku
-  const [productInfo, setProductInfo] = useState([]); // 商品组合信息
+  const [productInfo, setProductInfo] = useState<any>(); // 基本商品信息
   const [goodsPid, setGoodsPid] = useState(); /// 当前商品选中的规格 pid
   const [isBuy, setIsBuy] = useState(true); // 当前规格是否可以购买
   const [goodBuyLimit, setGoodBuyLimit] = useState(20); // 商品限购数量
-  const goodsInfo={
-    name:"这里是这个商品的标题",
-    summary:"这是我们放的是这个商品的描述详情",
-    marketPrice:5000,
-    merchantName:"得物",
-  }
+  // const goodsInfo={
+  //   name:"这里是这个商品的标题",
+  //   summary:"这是我们放的是这个商品的描述详情",
+  //   marketPrice:5000,
+  //   merchantName:"得物",
+  // }
   const brandInfo = {
     merchantName:"商家名称",
     merchantAddress:"这是商家地址",
   }
+
   useEffect(() => {
-    
+    getProductInfo()
   }, []);
+
+  // 获取商品信息
+  const getProductInfo = async () => {
+    let data:any = await getProduct({id:id})
+    console.log("ress",data)
+    if (data.status === Code.SuccessCode){
+      setProductInfo(data?.data)
+    } else {
+      message.error(data?.error)
+    }
+  };
 
   // 赠品框显示或者隐藏
   const changeGiftIsShow = () => {
@@ -78,78 +94,36 @@ const ProductDetailHeader: React.FC = () =>{
   };
 
   // 加入购物车
-  const addCart = async () => {
-    if (true) {
-      // 当前为登陆状态
-        console.log('登陆');
-      //   console.log(goodsPid);
-    //   if (goodsPid) {
-    //     // 添加购物车情况
-    //     const addCartStatus = await orderAddCart(
-    //       goodsInfo.gid,
-    //       goodsPid,
-    //       productNum
-    //     );
-    //     // 获取购物车条数
-    //     const cart_count = await getCartCount();
-    //     // console.log(addCartStatus, cart_count);
-    //     props.changeCartCount(cart_count.count);
-    //     message.success(addCartStatus.message);
-    //   } else {
-    //     setIsBuy(false);
-    //     message.error('该商品已售罄');
-    //   }
+  const addCart = async () => { // TODO:检验是否登陆
+    let data:any = await createCartAPI({
+      boss_id:productInfo?.boss_id,
+      product_id:productInfo?.id,
+      num:1,
+    })
+    if (data.status === Code.SuccessCode){
+      message.success(data?.data)
     } else {
-      // 未登陆状态
-        console.log('未登陆');
-    //   props.changeModalVisible(true);
+      message.error(data?.error)
     }
   };
 
   // 立即购买
   const buyNow = async () => {
-    if (true) {
-      // 当前为登陆状态
-      //   console.log('登陆');
-      //   console.log(goodsPid);
-      if (goodsPid) {
-        // 添加购物车 cart_type 设置为1 表示立即购买
-        // const cart_type = 1;
-        // const addCartStatus = await orderAddCart(
-        //   goodsInfo.gid,
-        //   goodsPid,
-        //   productNum,
-        //   cart_type
-        // );
-        // message.success(addCartStatus.message);
-        // // 跳转确认页
-        // props.history.push({
-        //   pathname: '/tr/checkout',
-        //   search: qs.stringify({ checkType: 1, sourceType: 1, cart_type: 1 }), // search:
-        // });
-      } else {
-        setIsBuy(false);
-        message.error('该商品已售罄');
-      }
-    } else {
-      // 未登陆状态
-      //   console.log('未登陆');
-    //   props.changeModalVisible(true);
-    }
+
   };
 
   return (
     <div className="detail-header">
-      {/* <Thumb
-        mainImg={goodsInfo?.img800 ? goodsInfo?.img800 : goodsInfo?.img800s}
-        thumbs={goodsInfo?.img_md}
-      /> */}
+      {/* <Thumb */}
+        {/* mainImg={goodsInfo?.img800 ? goodsInfo?.img800 : goodsInfo?.img800s} */}
+        {/* thumbs={goodsInfo?.img_md} */}
+      {/* /> */}
       {/* 商品活动 */}
       <div className="sku-container">
         <div className="name">
-          <div className="good-name ">{goodsInfo.name}</div>
+          <div className="good-name ">{productInfo?.title}</div>
         </div>
-        <div className="summary">{goodsInfo.summary}</div>
+        <div className="summary">{productInfo?.info}</div>
         <div className="promotion-box">
           <div className="promotion-wrap">
             <div className="pro-tit fl">
@@ -230,7 +204,7 @@ const ProductDetailHeader: React.FC = () =>{
               <span className="money-symbol">¥</span>
               <span className="value">
                 {Number(
-                  goodsInfo.marketPrice ? goodsInfo?.marketPrice / 100 : 100
+                  productInfo?.price
                 )}
               </span>
               <span className="money-symbol">起</span>
@@ -441,25 +415,13 @@ const ProductDetailHeader: React.FC = () =>{
           <h5 className="sku-title">配送区域</h5>
           <div className="address">
             <div>
-              <span>北京 北京市 海淀区</span>
+              <span>不配送的！！</span>
               <span>&nbsp;</span>
-              <a>修改</a>
             </div>
           </div>
         </div>
         {/* 商品规格 */}
         <div>
-          {/* <div style={{ overflow: 'hidden', padding: '0px 0px 12px' }}>
-            {goodsSkus.map((sku, index) => {
-              return (
-                <div className="size-line clearfix" key={index}>
-                  <h5 className="sku-title"> {sku[0].key_name} </h5>
-                  <div className="size-container">
-                  </div>
-                </div>
-              );
-            })}
-          </div> */}
           {/* 数量count */}
           <div className="count-line">
             <h5 className="sku-title count-title">数量</h5>
@@ -500,18 +462,11 @@ const ProductDetailHeader: React.FC = () =>{
                 type="primary"
                 className="m-btns m-btn-middle m-btn-brown"
                 onClick={addCart}
-                disabled={!isBuy}
-              >
-                {isBuy ? '加入购物车' : '该地区已售馨'}
-              </Button>
-              {isBuy ? (
-                <Button
-                  className="m-btns m-btn-middle m-btn-brown-stroke"
-                  onClick={buyNow}
-                >
-                  立即购买
-                </Button>
-              ) : null}
+              >加入购物车</Button>
+              <Button
+                className="m-btns m-btn-middle m-btn-brown-stroke"
+                onClick={buyNow}
+              >立即购买</Button>
             </div>
             {/* 收藏 */}
             <div className="favor-btn ">

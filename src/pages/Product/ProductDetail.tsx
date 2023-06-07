@@ -6,20 +6,17 @@ import { useLocation,useParams } from 'react-router-dom';
 import { getProduct, getProductImg } from '../../api/product';
 import { Code } from '../../constant';
 import ProductDetailHeader from './ProductDetailHeader';
-import ProductDetailsImgList from '../../components/ProductDetailImgList';
 
 const { TabPane } = Tabs;
 
 const ProductDetails: React.FC = () => {
   const {id} = useParams();
-  const productId:string = id || ''
   const [productDetail,setProductDetail]=useState();
   const [goodsInfo,setGoodsInfo]=useState();
   const [imgList,setImgList]=useState<API.ProductImgListResp[]>();
 
   const getProductDetail = async ()=>{
     let data:any = await getProduct({id:id})
-    console.log("data any",data)
     if (data.status === Code.SuccessCode){
       setProductDetail(data.data)
     } else {
